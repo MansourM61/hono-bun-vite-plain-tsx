@@ -1,0 +1,8 @@
+{
+    "name": "hono-bun-vite-plain-tsx",
+    "version": "0.0.0",
+    "description": "Hono-based backend with support of TSX; Vite-based frontend development",
+    "license": "MIT",
+    "author": "Mojtaba Mansour Abadi",
+    "type": "module"
+}
