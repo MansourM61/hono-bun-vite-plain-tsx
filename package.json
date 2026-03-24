@@ -4,5 +4,13 @@
     "description": "Hono-based backend with support of TSX; Vite-based frontend development",
     "license": "MIT",
     "author": "Mojtaba Mansour Abadi",
-    "type": "module"
+    "type": "module",
+    "devDependencies": {
+        "turbo": "^2.8.20"
+    },
+    "packageManager": "bun@1.3.6",
+    "workspaces": [
+        "apps/*",
+        "packages/*"
+    ]
 }
