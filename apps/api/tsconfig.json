@@ -1,6 +1,5 @@
 {
-    "extends": "../../packages/typescript-config/hono-server.json",
-    // "extends": "@repo/typescript-config/hono-server.json",
+    "extends": "./node_modules/@repo/typescript-config/hono-server.json",
     "compilerOptions": {
         /* project directories */
         "rootDir": "./",
@@ -15,7 +14,7 @@
         }
     },
     /** source files */
-    "file": ["./src/index.ts", "./hono.docs.ts"],
+    "files": ["./src/index.ts", "./hono.docs.ts"],
     "include": ["**/*.ts", "**/*.tsx"],
     "exclude": ["src/**/*.test.*", "test/", "dist/"]
 }
