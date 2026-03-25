@@ -30,18 +30,15 @@
     },
     "javascript": {
         "formatter": {
-            "enabled": true,
             "jsxQuoteStyle": "double",
             "quoteProperties": "asNeeded",
-            "trailingCommas": "none",
-            "semicolons": "always",
+            "trailingCommas": "es5",
+            "semicolons": "asNeeded",
             "arrowParentheses": "always",
             "bracketSameLine": false,
             "quoteStyle": "single",
             "attributePosition": "auto",
-            "bracketSpacing": true,
-            "operatorLinebreak": "after",
-            "trailingNewline": false
+            "bracketSpacing": true
         }
     },
     "html": {
@@ -53,10 +50,6 @@
     "json": {
         "formatter": {
             "trailingCommas": "none"
-        },
-        "parser": {
-            "allowComments": true,
-            "allowTrailingCommas": false
         }
     },
     "assist": {

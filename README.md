@@ -10,3 +10,4 @@ Hono-based framework fully based on Bun with support for TypeScript syntax and T
 4. Biome is added as package for linting and formatting (commit: `Biome is added as linter and formatter.`).
 5. TypeScript configuration is added. (commit: `TypeScript configuration is added.`).
 6. Git hooks (husky, lint-staged) are added for linting and formatting before commit (commit: `Git hooks (husky, lint-staged) are added.`).
+7. Hono server from [Git repo](https://github.com/MansourM61/hono-bun-plain-tsx) is added (commit: `Hono server is added.`).
