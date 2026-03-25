@@ -1,10 +1,12 @@
 {
     "$schema": "https://json.schemastore.org/tsconfig",
+    "display": "Hono",
     "extends": "./base.json",
     "compilerOptions": {
-        "types": ["bun"],
+        "noEmit": true,
         "jsx": "react-jsx",
-        "jsxImportSource": "hono/jsx"
-    },
-    "exclude": ["node_modules"]
+        "jsxImportSource": "hono/jsx",
+        "strictNullChecks": true,
+        "types": ["bun"]
+    }
 }

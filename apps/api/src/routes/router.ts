@@ -2,30 +2,30 @@
  * Common route handling GET and POST methods with different responses (plain text, HTML, JSON).
  * Query and body parameters validated using Hono validator and Zod.
  */
-import { sValidator } from '@hono/standard-validator'
-import { bodyObj, paramObj } from '@lib/data'
-import { Hono } from 'hono'
-import { cors } from 'hono/cors'
-import { html } from 'hono/html'
-import { basePath, baseRoutePath, matchedRoutes, routePath } from 'hono/route'
-import { validator } from 'hono/validator'
+import { sValidator } from '@hono/standard-validator';
+import { bodyObj, paramObj } from '@lib/data';
+import { Hono } from 'hono';
+import { cors } from 'hono/cors';
+import { html } from 'hono/html';
+import { basePath, baseRoutePath, matchedRoutes, routePath } from 'hono/route';
+import { validator } from 'hono/validator';
 
 /** Route Handlers */
 const app = new Hono()
     // GET method handler
     // response: plain text
     .get('/', (c) => {
-        return c.text('Hello Hono!')
+        return c.text('Hello Hono!');
     })
 
     // GET method with parameter handler
     // response: HTML
     .get('/param/:username', (c) => {
-        const { username } = c.req.param()
+        const { username } = c.req.param();
         return c.html(
             html`<!doctype html>
                 <h1>Hello! ${username}!</h1>`
-        )
+        );
     })
 
     // apply CORS for a specific route
@@ -39,8 +39,8 @@ const app = new Hono()
             routePath: routePath(c), // '/posts/:id'
             matchedRoutes: matchedRoutes(c), // Array of matched routes
             baseRoutePath: baseRoutePath(c), // '/api'
-            basePath: basePath(c), // '/api' (with actual params)
-        })
+            basePath: basePath(c) // '/api' (with actual params)
+        });
     })
 
     // POST method handler
@@ -50,35 +50,35 @@ const app = new Hono()
         '/api',
         // Validate the JSON body
         validator('json', async (value, c) => {
-            const parsed = await bodyObj.safeParseAsync(value)
+            const parsed = await bodyObj.safeParseAsync(value);
 
             if (!parsed.success) {
-                return c.text('Invalid tester details!', 401)
+                return c.text('Invalid tester details!', 401);
             }
 
-            const rawData = parsed.data
+            const rawData = parsed.data;
 
-            return rawData
+            return rawData;
         }),
         // Validate the query (search) parameter
         sValidator('query', paramObj),
         // Handle the request and start with validating the body and query
         async (c) => {
-            const { param } = c.req.valid('query')
-            const { param_1, param_2 } = c.req.valid('json')
+            const { param } = c.req.valid('query');
+            const { param_1, param_2 } = c.req.valid('json');
 
             return c.json({
                 queryParam: param,
                 body: {
                     param_1,
-                    param_2,
-                },
-            })
+                    param_2
+                }
+            });
         }
-    )
+    );
 
 // export used to perform routing
-export default app
+export default app;
 
 // export used to generate OpenAPI document
-export type AppType = typeof app
+export type AppType = typeof app;

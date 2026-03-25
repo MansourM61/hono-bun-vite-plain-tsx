@@ -1,0 +1,21 @@
+{
+    "extends": "../../packages/typescript-config/hono-server.json",
+    // "extends": "@repo/typescript-config/hono-server.json",
+    "compilerOptions": {
+        /* project directories */
+        "rootDir": "./",
+        "outDir": "./dist",
+        /* path definitions */
+        "paths": {
+            "@/*": ["./*"],
+            "@src/*": ["./src/*"],
+            "@lib/*": ["./src/lib/*"],
+            "@middleware/*": ["./src/middleware/*"],
+            "@routes/*": ["./src/routes/*"]
+        }
+    },
+    /** source files */
+    "file": ["./src/index.ts", "./hono.docs.ts"],
+    "include": ["**/*.ts", "**/*.tsx"],
+    "exclude": ["src/**/*.test.*", "test/", "dist/"]
+}

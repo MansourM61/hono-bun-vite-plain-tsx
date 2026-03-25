@@ -1,8 +1,8 @@
 /** OpenAPI Configuration File */
-import { defaultPort } from '@lib/constants'
-import { loadNodeEnv } from '@lib/utils'
-import { defineConfig } from '@rcmade/hono-docs'
-import { name, openapi, version } from '@/package.json'
+import { defaultPort } from '@lib/constants';
+import { loadNodeEnv } from '@lib/utils';
+import { defineConfig } from '@rcmade/hono-docs';
+import { name, openapi, version } from '@/package.json';
 
 // configure generation of OpenAPi documentation
 export default defineConfig({
@@ -11,11 +11,11 @@ export default defineConfig({
         openapi: '3.0.0',
         info: { title: `${name} API`, version: version },
         servers: [
-            { url: `http://localhost:${loadNodeEnv('PORT', defaultPort)}` },
-        ],
+            { url: `http://localhost:${loadNodeEnv('PORT', defaultPort)}` }
+        ]
     },
     outputs: {
-        openApiJson: openapi,
+        openApiJson: openapi
     },
     apis: [
         {
@@ -29,9 +29,9 @@ export default defineConfig({
                     method: 'get',
                     summary: 'Throws an error to test error catching', // Optional: title shown in docs
                     description: 'Throws an error',
-                    tag: ['Error Routes'],
-                },
-            ],
+                    tag: ['Error Routes']
+                }
+            ]
         },
         {
             name: 'Individual Routes',
@@ -43,9 +43,9 @@ export default defineConfig({
                     method: 'get',
                     summary: 'Individual route summary',
                     description: 'Individual route description',
-                    tag: ['Individual Routes'],
-                },
-            ],
+                    tag: ['Individual Routes']
+                }
+            ]
         },
         {
             name: 'JSX Routes',
@@ -57,9 +57,9 @@ export default defineConfig({
                     method: 'get',
                     summary: 'JSX route summary',
                     description: 'JSX route description',
-                    tag: ['JSX Routes'],
-                },
-            ],
+                    tag: ['JSX Routes']
+                }
+            ]
         },
         {
             name: 'Common Routes',
@@ -71,21 +71,21 @@ export default defineConfig({
                     method: 'get',
                     summary: 'GET method handler',
                     description: 'Response: plain text',
-                    tag: ['Common Routes'],
+                    tag: ['Common Routes']
                 },
                 {
                     api: '/param/{username}',
                     method: 'get',
                     summary: 'GET method handler',
                     description: 'Response: plain text',
-                    tag: ['Common Routes'],
+                    tag: ['Common Routes']
                 },
                 {
                     api: '/posts/{id}',
                     method: 'get',
                     summary: 'GET method handler',
                     description: 'Response: JSON, Route helpers included',
-                    tag: ['Common Routes'],
+                    tag: ['Common Routes']
                 },
                 {
                     api: '/api',
@@ -93,9 +93,9 @@ export default defineConfig({
                     summary: 'POST method handler',
                     description:
                         'Response: JSON, Validates body and query parameters',
-                    tag: ['Common Routes'],
-                },
-            ],
-        },
-    ],
-})
+                    tag: ['Common Routes']
+                }
+            ]
+        }
+    ]
+});

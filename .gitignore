@@ -5,7 +5,15 @@ node_modules/
 .DS_Store
 
 # build
-dist/
+out/
+build
+dist
 
 # turbo
 .turbo
+
+# Testing
+coverage
+
+# logs
+*.log

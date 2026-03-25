@@ -1,18 +1,18 @@
 /**
  * Server entry point
  */
-import { defaultPort } from '@lib/constants'
-import { isDevMode, loadBunEnv } from '@lib/utils'
-import middleware, { custIndMiddleware } from '@middleware/middleware'
-import staticServer from '@middleware/static'
-import docs from '@routes/docs'
-import error from '@routes/error'
-import indRoute from '@routes/ind-route'
-import jsxRoute from '@routes/jsx-route'
-import router from '@routes/router'
-import specials from '@routes/specials'
-import { Hono } from 'hono'
-import { cors } from 'hono/cors'
+import { defaultPort } from '@lib/constants';
+import { isDevMode, loadBunEnv } from '@lib/utils';
+import middleware, { custIndMiddleware } from '@middleware/middleware';
+import staticServer from '@middleware/static';
+import docs from '@routes/docs';
+import error from '@routes/error';
+import indRoute from '@routes/ind-route';
+import jsxRoute from '@routes/jsx-route';
+import router from '@routes/router';
+import specials from '@routes/specials';
+import { Hono } from 'hono';
+import { cors } from 'hono/cors';
 
 const app = new Hono()
     // apply individual middleware
@@ -42,27 +42,27 @@ const app = new Hono()
     // `Not Found` handler
     // must be at the top level
     .notFound((c) => {
-        return c.text('Custom 404 Message', 404)
+        return c.text('Custom 404 Message', 404);
     })
 
     // uncaught errors global handler
     .onError((err, c) => {
-        console.error(`${err}`)
-        console.log('Error handling @ global')
-        return c.text('Custom Error Message', 500)
-    })
+        console.error(`${err}`);
+        console.log('Error handling @ global');
+        return c.text('Custom Error Message', 500);
+    });
 
 // enable OpenAPI documentation only in `development` mode
 if (isDevMode()) {
     // Swagger UI
-    app.route('/doc', docs)
+    app.route('/doc', docs);
 }
 
 // export used by Bun server
 export default {
     port: parseInt(loadBunEnv('PORT', defaultPort), 10),
-    fetch: app.fetch,
-}
+    fetch: app.fetch
+};
 
 // export used in tests
-export { app }
+export { app };
